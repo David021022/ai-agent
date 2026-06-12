@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: ai-agent
+  profiles:
+    active: local
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/yu_ai_agent?currentSchema=public}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+    vectorstore:
+      pgvector:
+        dimensions: 1024
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        initialize-schema: false
+    mcp:
+      client:
+ #       sse:
+#          connections:
+          #              server1:
+    #               url: http://localhost:8127
+
+         stdio:
+           servers-configuration: classpath:mcp-servers.json
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+   # springdoc-openapi????
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.agent.aiagent.controller
+    # knife4j???????????????
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
+
