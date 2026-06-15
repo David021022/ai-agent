@@ -1,24 +1,31 @@
 <template>
   <main class="home-page">
-    <section class="hero">
-      <p class="eyebrow">AI Chat Suite</p>
-      <h1>选择你要进入的应用</h1>
-      <p class="summary">
-        两个聊天入口共享同一套聊天体验，但调用不同的后端 SSE 接口。
-      </p>
+    <section class="hero-panel">
+      <div class="hero-badge">AI 智能体</div>
+      <h1>选择一个入口开始体验</h1>
     </section>
 
-    <section class="grid">
+    <section class="cards">
       <RouterLink class="entry-card love" to="/love">
-        <span class="tag">页面 1</span>
-        <h2>AI 恋爱大师</h2>
-        <p>面向情感陪伴与聊天建议的实时对话页面。</p>
+        <div class="card-top">
+          <span class="card-icon">♥</span>
+        </div>
+        <div class="card-body">
+          <h2>AI 旅游大师</h2>
+          <p>面向旅游指南和行程规划的智能助手。</p>
+        </div>
+        <div class="card-action">立即体验</div>
       </RouterLink>
 
       <RouterLink class="entry-card manus" to="/manus">
-        <span class="tag">页面 2</span>
-        <h2>AI 超级智能体</h2>
-        <p>面向通用智能体能力的实时对话页面。</p>
+        <div class="card-top">
+          <span class="card-icon">✦</span>
+        </div>
+        <div class="card-body">
+          <h2>AI 超级智能体</h2>
+          <p>面向通用智能体能力的实时对话入口。</p>
+        </div>
+        <div class="card-action">立即体验</div>
       </RouterLink>
     </section>
   </main>
@@ -26,95 +33,160 @@
 
 <style scoped>
 .home-page {
-  width: min(1120px, calc(100vw - 1.2rem));
-  margin: 0 auto;
-  padding: 2rem 0 2.5rem;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #111827;
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.1), transparent 28%),
+    radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.08), transparent 24%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
 }
 
-.hero {
-  margin-bottom: 1.5rem;
+.hero-panel {
+  max-width: 920px;
+  margin: 0 auto 2rem;
+  padding: 1.4rem 1.6rem;
+  text-align: center;
 }
 
-.eyebrow {
-  margin: 0 0 0.35rem;
-  color: var(--text-soft);
+.hero-badge {
+  width: fit-content;
+  margin: 0 auto 0.9rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-size: 0.78rem;
+  color: rgba(17, 24, 39, 0.6);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  color: var(--text-strong);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #0f172a;
 }
 
-.summary {
-  max-width: 42rem;
-  margin: 0.75rem 0 0;
-  color: var(--text-soft);
-}
-
-.grid {
+.cards {
+  max-width: 1040px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .entry-card {
-  min-height: 16rem;
-  padding: 1.5rem;
-  border-radius: 1.4rem;
-  border: 1px solid var(--panel-border);
-  display: grid;
-  align-content: start;
-  gap: 0.85rem;
-  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  min-height: 28rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
   transition:
-    transform 0.18s ease,
-    border-color 0.18s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .entry-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 72px rgba(15, 23, 42, 0.12);
+  border-color: rgba(15, 23, 42, 0.14);
 }
 
-.love {
-  background:
-    radial-gradient(circle at top right, rgba(255, 139, 102, 0.34), transparent 36%),
-    rgba(14, 20, 38, 0.88);
-}
-
-.manus {
-  background:
-    radial-gradient(circle at top right, rgba(127, 140, 255, 0.32), transparent 36%),
-    rgba(14, 20, 38, 0.88);
-}
-
-.tag {
-  width: fit-content;
-  padding: 0.35rem 0.7rem;
+.entry-card::before {
+  content: '';
+  position: absolute;
+  inset: auto -12% -18% auto;
+  width: 14rem;
+  height: 14rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-soft);
-  font-size: 0.8rem;
+  filter: blur(8px);
+  opacity: 0.95;
 }
 
-h2 {
+.love::before {
+  background: radial-gradient(circle, rgba(251, 113, 133, 0.28) 0%, rgba(251, 113, 133, 0) 72%);
+}
+
+.manus::before {
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.28) 0%, rgba(96, 165, 250, 0) 72%);
+}
+
+.card-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.04);
+  color: rgba(15, 23, 42, 0.68);
+}
+
+.card-body {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 5rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.card-body h2 {
   margin: 0;
-  font-size: 1.5rem;
-  color: var(--text-strong);
+  font-size: 1.8rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0f172a;
 }
 
-p {
+.card-body p {
+  max-width: 22rem;
   margin: 0;
-  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(15, 23, 42, 0.68);
 }
 
-@media (max-width: 760px) {
-  .grid {
+.card-action {
+  position: absolute;
+  left: 1.4rem;
+  right: 1.4rem;
+  bottom: 1.4rem;
+  height: 3.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #0f172a;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
+}
+
+@media (max-width: 820px) {
+  .home-page {
+    padding: 1rem;
+  }
+
+  .cards {
     grid-template-columns: 1fr;
+  }
+
+  .entry-card {
+    min-height: 24rem;
   }
 }
 </style>

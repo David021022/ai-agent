@@ -72,7 +72,7 @@ class LoveAppTest {
 
         testMessage("执行 Python3 脚本来生成数据分析报告");
 
-        testMessage("保存我的恋爱档案为文件");
+        testMessage("保存我的旅游档案为文件");
 
         testMessage("生成一份‘七夕约会计划’PDF，包含餐厅预订、活动流程和礼物清单");
     }
@@ -92,7 +92,7 @@ class LoveAppTest {
         Assertions.assertNotNull(answer);
 */
 
-        String message = "帮我搜索一些哄另一半开心的图片";
+        String message = "帮我搜索一张哄另一半开心的图片";
         String answer =  loveApp.doChatWithMcp(message, chatId);
         Assertions.assertNotNull(answer);
     }

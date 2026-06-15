@@ -1,7 +1,6 @@
 <template>
   <ChatShell
-    :title="'AI 恋爱大师'"
-    subtitle="输入你的情感困惑，让 AI 以聊天室方式实时回应。"
+    title="AI 旅游大师"
     :chat-id="chatId"
     :messages="messages"
     :is-streaming="isStreaming"
@@ -13,12 +12,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import ChatShell from '@/components/ChatShell.vue';
-import { buildLoveChatUrl } from '@/api/ai';
+//import { buildLoveChatUrl } from '@/api/ai';
+import { buildLoveToolsChatUrl } from '@/api/ai';
 import { useSseChat } from '@/composables/useSseChat';
 
 const chatId = ref(globalThis.crypto?.randomUUID?.() ?? `love_${Date.now()}`);
 
 const { messages, isStreaming, sendMessage, stop } = useSseChat({
-  createStreamUrl: (message) => buildLoveChatUrl(message, chatId.value),
+  createStreamUrl: (message) => buildLoveToolsChatUrl(message, chatId.value),
 });
 </script>

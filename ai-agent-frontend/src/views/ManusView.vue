@@ -1,7 +1,6 @@
 <template>
   <ChatShell
-    :title="'AI 超级智能体'"
-    subtitle="输入需求，体验智能体实时推理与回复。"
+    title="AI 超级智能体"
     :chat-id="chatId"
     :messages="messages"
     :is-streaming="isStreaming"

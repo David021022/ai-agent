@@ -11,12 +11,7 @@
     />
 
     <div class="input-actions">
-      <button
-        v-if="isStreaming"
-        class="secondary"
-        type="button"
-        @click="$emit('stop')"
-      >
+      <button v-if="isStreaming" class="secondary" type="button" @click="$emit('stop')">
         停止生成
       </button>
       <button class="primary" type="submit" :disabled="disabled || !modelValue.trim()">
@@ -61,7 +56,13 @@ const submit = () => {
 <style scoped>
 .chat-input {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.85rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 16px 50px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(18px);
 }
 
 textarea {
@@ -70,15 +71,15 @@ textarea {
   min-height: 6rem;
   padding: 1rem 1.05rem;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(11, 16, 32, 0.84);
-  color: var(--text-strong);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(248, 250, 252, 0.96);
+  color: #0f172a;
   outline: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 textarea:focus {
-  border-color: rgba(127, 140, 255, 0.58);
+  border-color: rgba(15, 23, 42, 0.22);
 }
 
 textarea:disabled {
@@ -112,11 +113,11 @@ button:disabled {
 
 .primary {
   color: #fff;
-  background: linear-gradient(135deg, var(--primary-strong), var(--accent));
+  background: #0f172a;
 }
 
 .secondary {
-  color: var(--text-strong);
-  background: rgba(255, 255, 255, 0.08);
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.06);
 }
 </style>

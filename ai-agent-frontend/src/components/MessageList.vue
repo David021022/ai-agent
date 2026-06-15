@@ -33,7 +33,7 @@ watch(
   flex-direction: column;
   gap: 0.8rem;
   overflow: auto;
-  padding: 1rem;
+  padding: 1.1rem;
   min-height: 0;
 }
 </style>

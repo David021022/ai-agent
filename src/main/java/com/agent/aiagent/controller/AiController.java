@@ -84,8 +84,16 @@ public class AiController {
         return emitter;
     }
 
+
+    //SSE流式调用AI恋爱大师应用（工具）
+    @GetMapping(value = "/love_app/chat/tools/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> doChatWithLoveAppToolsSSE(String message, String chatId) {
+        return loveApp.doChatWithToolsByStream(message, chatId);
+    }
+
     /*
-    * 流式调用Manus超级智能体*/
+    * 流式调用Manus超级智能体
+    * */
 
     @GetMapping("/manus/chat")
     public SseEmitter doChatWithManus(String message) {

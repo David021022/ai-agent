@@ -17,3 +17,10 @@ export function buildLoveChatUrl(message: string, chatId: string) {
 export function buildManusChatUrl(message: string) {
   return buildUrl('ai/manus/chat', { message });
 }
+
+
+
+
+export function buildLoveToolsChatUrl(message: string, chatId: string) {
+  return buildUrl('ai/love_app/chat/tools/sse', { message, chatId });
+}

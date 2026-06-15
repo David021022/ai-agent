@@ -14,7 +14,7 @@ describe('home navigation', () => {
       },
     });
 
-    expect(wrapper.text()).toContain('AI 恋爱大师');
+    expect(wrapper.text()).toContain('AI 旅游大师');
     expect(wrapper.text()).toContain('AI 超级智能体');
   });
 });
